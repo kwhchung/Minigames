@@ -1,0 +1,16 @@
+*{
+  box-sizing: border-box;
+}
+div{
+  width: 300px;
+  height: 300px;
+  text-align: center;
+  font-size: 0;
+}
+
+div button{
+  width: 33.33%;
+  height: 33.33%;
+  border: 2px solid black;
+  padding: 0;
+}

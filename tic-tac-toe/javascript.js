@@ -11,19 +11,19 @@ function gameRound(i, j){
     }
     return;
   }
+  if(draw()){
+    document.getElementById("result").innerHTML = "Draw";
+    for(let i = 0; i < 9; i ++){
+      document.getElementsByTagName("button")[i].disabled = true;
+    }
+    return;
+  }
   let pos = computer();
   map[pos[0]][pos[1]] = 2;
   document.getElementsByTagName("button")[pos[0] * 3 + pos[1]].innerHTML = "<img src = 'images/circle.png' width = '100%' height = '100%'>";
   document.getElementsByTagName("button")[pos[0] * 3 + pos[1]].disabled = true;
   if(win(2)){
     document.getElementById("result").innerHTML = "You lose!";
-    for(let i = 0; i < 9; i ++){
-      document.getElementsByTagName("button")[i].disabled = true;
-    }
-    return;
-  }
-  if(draw()){
-    document.getElementById("result").innerHTML = "Draw";
     for(let i = 0; i < 9; i ++){
       document.getElementsByTagName("button")[i].disabled = true;
     }
@@ -130,8 +130,22 @@ function computer(){
   if(count > 4 && map[7 - count][count - 5] == 0){
     return [7 - count, count - 5];
   }
-
   return [0, 1];
+  for(let i = 0; i < 3; i += 2){
+    if(map[i][i] == 0){
+      return [i, i];
+    }
+    if(map[i][2 - i] == 0){
+      return [i, 2 - i];
+    }
+  }
+  for(let i = 0; i < 3; i ++){
+    for(let j = 0; j < 3; j ++){
+      if(map[i][j] == 0){
+        return [i, j];
+      }
+    }
+  }
 }
 
 function draw(){

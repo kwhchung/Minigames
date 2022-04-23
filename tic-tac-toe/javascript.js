@@ -130,7 +130,6 @@ function computer(){
   if(count > 4 && map[7 - count][count - 5] == 0){
     return [7 - count, count - 5];
   }
-  return [0, 1];
   for(let i = 0; i < 3; i += 2){
     if(map[i][i] == 0){
       return [i, i];

@@ -145,8 +145,9 @@ function computer(){
     }
   }
   if(count > 1){
+    let i = 0;
     do{
-      let i = Math.floor(Math.random() * 4);
+      i = Math.floor(Math.random() * 4);
       if(map[corners[i][0]][corners[i][1]] == 0){
         return corners[i];
       }

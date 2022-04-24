@@ -1,4 +1,5 @@
 const map = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
+const corners = [[0, 0], [0, 2], [2, 0], [2, 2]];
 
 function gameRound(i, j){
   map[i][j] = 1;
@@ -130,13 +131,26 @@ function computer(){
   if(count > 4 && map[7 - count][count - 5] == 0){
     return [7 - count, count - 5];
   }
-  for(let i = 0; i < 3; i += 2){
-    if(map[i][i] == 0){
-      return [i, i];
+  count = 0;
+  for(let i = 0; i < 4; i ++){
+    if(map[corners[i][0]][corners[i][1]] == 0){
+      count ++;
     }
-    if(map[i][2 - i] == 0){
-      return [i, 2 - i];
+  }
+  if(count == 1){
+    for(let i = 0; i < 4; i ++){
+      if(map[corners[i][0]][corners[i][1]] == 0){
+        return corners[i];
+      }
     }
+  }
+  if(count > 1){
+    do{
+      let i = Math.floor(Math.random() * 4);
+      if(map[corners[i][0]][corners[i][1]] == 0){
+        return corners[i];
+      }
+    }while(map[corners[i][0]][corners[i][1]] != 0);
   }
   for(let i = 0; i < 3; i ++){
     for(let j = 0; j < 3; j ++){

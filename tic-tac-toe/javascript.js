@@ -14,9 +14,6 @@ function gameRound(i, j){
   }
   if(draw()){
     document.getElementById("result").innerHTML = "Draw";
-    for(let i = 0; i < 9; i ++){
-      document.getElementsByTagName("button")[i].disabled = true;
-    }
     return;
   }
   let pos = computer();

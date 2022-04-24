@@ -33,5 +33,6 @@ p{
   div{
     width: 95vw;
     height: 95vw;
+    margin-top: 0;
   }
 }

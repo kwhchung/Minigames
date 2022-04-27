@@ -1,7 +1,5 @@
 const map = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
 const corners = [[0, 0], [0, 2], [2, 0], [2, 2]];
-document.getElementsByClassName("selectCharacter")[0].style = "background-color: #eee; border-bottom: 2px solid black;";
-document.getElementsByTagName("input")[0].disabled = true;
 
 function changeCharacter(i){
   restart();
@@ -208,7 +206,7 @@ function restart(){
   }
   document.getElementById("result").innerHTML = "";
   if(document.getElementsByTagName("input")[1].checked == true){
-    let pos = computer();
+    let pos = [Math.floor(Math.random() * 3), Math.floor(Math.random() * 3)];
     map[pos[0]][pos[1]] = 2;
     document.getElementsByTagName("button")[pos[0] * 3 + pos[1]].innerHTML = "<img src = 'images/cross.png' width = '100%' height = '100%'>";
     document.getElementsByTagName("button")[pos[0] * 3 + pos[1]].disabled = true;

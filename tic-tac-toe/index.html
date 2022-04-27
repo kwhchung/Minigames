@@ -2,12 +2,21 @@
 <html>
 <head>
 <link rel = "stylesheet" href = "styles.css">
-<script src = "javascript.js"></script>
 <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
 <title>Tic-tac-toe</title>
 </head>
 <body>
-<div>
+<div id = "selectContainer">
+  <div class = "selectCharacter">
+    <input type = "radio" id = "cross" name = "character" value = "cross" onclick = "changeCharacter(0)" checked>
+    <label for = "cross"><img src = "images/cross.png" width = "20px" height = "20px"></label>
+  </div>
+  <div class = "selectCharacter">
+    <input type = "radio" id = "circle" name = "character" value = "circle" onclick = "changeCharacter(1)">
+    <label for = "circle"><img src = "images/circle.png" width = "20px" height = "20px"></label>
+  </div>
+</div>
+<div id = "map">
   <button onclick = "gameRound(0, 0)"></button>
   <button onclick = "gameRound(0, 1)"></button>
   <button onclick = "gameRound(0, 2)"></button>
@@ -18,8 +27,8 @@
   <button onclick = "gameRound(2, 1)"></button>
   <button onclick = "gameRound(2, 2)"></button>
 </div>
-<br>
 <button id = "restart" onclick = "restart()">Restart</button>
 <p id = "result"></p>
 </body>
+<script src = "javascript.js"></script>
 </html>

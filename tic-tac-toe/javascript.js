@@ -1,9 +1,23 @@
 const map = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
 const corners = [[0, 0], [0, 2], [2, 0], [2, 2]];
+document.getElementsByClassName("selectCharacter")[0].style = "background-color: #eee; border-bottom: 2px solid black;";
+document.getElementsByTagName("input")[0].disabled = true;
+
+function changeCharacter(i){
+  restart();
+  document.getElementsByClassName("selectCharacter")[i].style = "background-color: #eee; border-bottom: 2px solid black;";
+  document.getElementsByTagName("input")[i].disabled = true;
+  document.getElementsByClassName("selectCharacter")[1 - i].style = "";
+  document.getElementsByTagName("input")[1 - i].disabled = false;
+}
 
 function gameRound(i, j){
   map[i][j] = 1;
-  document.getElementsByTagName("button")[i * 3 + j].innerHTML = "<img src = 'images/cross.png' width = '100%' height = '100%'>";
+  if(document.getElementsByTagName("input")[0].checked == true){
+    document.getElementsByTagName("button")[i * 3 + j].innerHTML = "<img src = 'images/cross.png' width = '100%' height = '100%'>";
+  }else{
+    document.getElementsByTagName("button")[i * 3 + j].innerHTML = "<img src = 'images/circle.png' width = '100%' height = '100%'>";
+  }
   document.getElementsByTagName("button")[i * 3 + j].disabled = true;
   if(win(1)){
     document.getElementById("result").innerHTML = "You win!";
@@ -18,13 +32,21 @@ function gameRound(i, j){
   }
   let pos = computer();
   map[pos[0]][pos[1]] = 2;
-  document.getElementsByTagName("button")[pos[0] * 3 + pos[1]].innerHTML = "<img src = 'images/circle.png' width = '100%' height = '100%'>";
+  if(document.getElementsByTagName("input")[0].checked == true){
+    document.getElementsByTagName("button")[pos[0] * 3 + pos[1]].innerHTML = "<img src = 'images/circle.png' width = '100%' height = '100%'>";
+  }else{
+    document.getElementsByTagName("button")[pos[0] * 3 + pos[1]].innerHTML = "<img src = 'images/cross.png' width = '100%' height = '100%'>";
+  }
   document.getElementsByTagName("button")[pos[0] * 3 + pos[1]].disabled = true;
   if(win(2)){
     document.getElementById("result").innerHTML = "You lose!";
     for(let i = 0; i < 9; i ++){
       document.getElementsByTagName("button")[i].disabled = true;
     }
+  }
+  if(draw()){
+    document.getElementById("result").innerHTML = "Draw";
+    return;
   }
 }
 
@@ -185,4 +207,10 @@ function restart(){
     document.getElementsByTagName("button")[i].disabled = false;
   }
   document.getElementById("result").innerHTML = "";
+  if(document.getElementsByTagName("input")[1].checked == true){
+    let pos = computer();
+    map[pos[0]][pos[1]] = 2;
+    document.getElementsByTagName("button")[pos[0] * 3 + pos[1]].innerHTML = "<img src = 'images/cross.png' width = '100%' height = '100%'>";
+    document.getElementsByTagName("button")[pos[0] * 3 + pos[1]].disabled = true;
+  }
 }

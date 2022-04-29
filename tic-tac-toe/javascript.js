@@ -206,9 +206,16 @@ function restart(){
   }
   document.getElementById("result").innerHTML = "";
   if(document.getElementsByTagName("input")[1].checked == true){
-    let pos = [Math.floor(Math.random() * 3), Math.floor(Math.random() * 3)];
-    map[pos[0]][pos[1]] = 2;
-    document.getElementsByTagName("button")[pos[0] * 3 + pos[1]].innerHTML = "<img src = 'images/cross.png' width = '100%' height = '100%'>";
-    document.getElementsByTagName("button")[pos[0] * 3 + pos[1]].disabled = true;
+    let i = Math.floor(Math.random() * 9);
+    if(i >= 4){
+      map[1][1] = 2;
+      document.getElementsByTagName("button")[4].innerHTML = "<img src = 'images/cross.png' width = '100%' height = '100%'>";
+      document.getElementsByTagName("button")[4].disabled = true;
+    }else{
+      map[corners[i][0]][corners[i][1]] = 2;
+      document.getElementsByTagName("button")[corners[i][0] * 3 + corners[i][1]].innerHTML = "<img src = 'images/cross.png' width = '100%' height = '100%'>";
+      document.getElementsByTagName("button")[corners[i][0] * 3 + corners[i][1]].disabled = true;
+    }
+
   }
 }

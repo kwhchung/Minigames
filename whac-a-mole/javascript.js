@@ -4,7 +4,7 @@ const map = [-1, -1, -1, -1, -1, -1, -1, -1, -1];
 const scores = [1, 5, 10];
 const types = ["red", "yellow", "blue"];
 for(let i = 0; i < 9; i ++){
-  document.getElementsByTagName("span")[i].style = "top: 100%";
+  document.getElementsByTagName("span")[i].style = "top: 101%";
 }
 if(count < 50){
   setInterval(appear, 1500);
@@ -36,13 +36,13 @@ function appear(){
 }
 
 function disappear(i){
-  document.getElementsByTagName("span")[i].style = "top: 100%; transition: top 0.3s; background-color: " + types[map[i]] + ";";
+  document.getElementsByTagName("span")[i].style = "top: 101%; transition: top 0.3s; background-color: " + types[map[i]] + ";";
   map[i] = -1;
 }
 
 function hit(i){
   if(map[i] > -1){
-    document.getElementsByTagName("span")[i].style = "top: 100%;";
+    document.getElementsByTagName("span")[i].style = "top: 101%;";
     score += scores[map[i]];
     document.getElementById("score").innerHTML = "Score: " + score;
     map[i] = -1;
@@ -54,6 +54,6 @@ function restart(){
   document.getElementById("score").innerHTML = "Score: " + score;
   for(let i = 0; i < 9; i ++){
     map[i] = -1;
-    document.getElementsByTagName("span")[i].style = "top: 100%";
+    document.getElementsByTagName("span")[i].style = "top: 101%";
   }
 }

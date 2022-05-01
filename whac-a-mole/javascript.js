@@ -6,13 +6,7 @@ const types = ["red", "yellow", "blue"];
 for(let i = 0; i < 9; i ++){
   document.getElementsByTagName("span")[i].style = "top: 101%";
 }
-if(count < 50){
-  setInterval(appear, 1500);
-}else if(count < 100){
-  setInterval(appear, 1000);
-}else{
-  setInterval(appear, 500);
-}
+setInterval(appear, 1000);
 
 function appear(){
   let i = 0;

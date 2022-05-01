@@ -69,18 +69,18 @@ span{
 
   #map{
     width: 95vw;
-    height: 80vh;
+    height: 75vh;
     padding-top: 5vh;
   }
 
   p{
-    height: 10vh;
+    height: 8vh;
     margin-bottom: 1vh;
   }
 
   div button{
     width: 14vw;
     height: 14vw;
-    margin: calc((18vh - 14vw) / 2) 6vw;
+    margin: calc((16vh - 14vw) / 2) 6vw;
   }
 }

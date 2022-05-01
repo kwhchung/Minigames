@@ -45,7 +45,7 @@ function hit(i){
     document.getElementsByTagName("span")[i].style = "top: 101%;";
     score += scores[map[i]];
     document.getElementById("score").innerHTML = "Score: " + score;
-    map[i] = -1;
+    setTimeout(function(){map[i] = -1;}, 2000);
   }
 }
 

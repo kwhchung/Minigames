@@ -45,7 +45,9 @@ function appear(){
 
 function disappear(i){
   document.getElementsByTagName("span")[i].style = "top: 101%; transition: top 0.3s; background-color: " + types[map[i]] + ";";
-  map[i] = -1;
+  if(map[i] > -1){
+    map[i] = -1;
+  }
 }
 
 function hit(i){

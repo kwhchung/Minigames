@@ -36,7 +36,7 @@ function appear(){
   let pos;
   do{
     pos = Math.floor(Math.random() * 9);
-  }while(map[pos] > -1);
+  }while(map[pos] != -1);
   let type = Math.floor(Math.random() * 3);
   map[pos] = type;
   document.getElementsByTagName("span")[pos].style = "top: 0; transition: top 0.3s; background-color: " + types[type] + ";";
@@ -53,6 +53,7 @@ function hit(i){
     document.getElementsByTagName("span")[i].style = "top: 101%;";
     score += scores[map[i]];
     document.getElementById("score").innerHTML = "Score: " + score;
+    map[i] = -2;
     setTimeout(function(){map[i] = -1;}, 2000);
   }
 }

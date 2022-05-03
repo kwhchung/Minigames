@@ -1,5 +1,6 @@
 *{
   box-sizing: border-box;
+  font-family: arial;
 }
 
 #map{
@@ -30,7 +31,7 @@ p{
   text-align: right;
 }
 
-div button{
+#map button{
   margin: 30px 80px;
   width: 80px;
   height: 80px;
@@ -66,10 +67,18 @@ span{
   background-color: white;
 }
 
-#restart{
-  display: block;
-  margin: auto;
+#selectDifficulty{
   font-size: 18px;
+  text-align: center;
+}
+
+#difficulty{
+  font-size: 18px;
+}
+
+#restart{
+  font-size: 18px;
+  margin-left: 20px;
 }
 
 @media only screen and (max-width: 768px){
@@ -90,7 +99,7 @@ span{
     font-size: 20px;
   }
 
-  div button{
+  #map button{
     width: 14vw;
     height: 14vw;
     margin: calc((16vh - 14vw) / 2) 6vw;

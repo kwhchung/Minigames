@@ -81,7 +81,16 @@
     </div>
   </button>
 </div>
-<button id = "restart" onclick = "restart()">Restart</button>
+<div id = "selectDifficulty">
+  <label for = "difficulty">Difficulty: </label>
+  <select id = "difficulty">
+    <option value = "easy" selected>Easy</option>
+    <option value = "normal">Normal</option>
+    <option value = "hard">Hard</option>
+    <option value = "expert">Expert</option>
+  </select>
+  <button id = "restart" onclick = "restart()">Restart</button>
+</div>
 </body>
 <script src = "javascript.js"></script>
 </html>

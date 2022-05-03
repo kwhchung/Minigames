@@ -3,6 +3,7 @@ let seconds = 60;
 const map = [-1, -1, -1, -1, -1, -1, -1, -1, -1];
 const scores = [1, 5, 10];
 const types = ["red", "yellow", "blue"];
+let timeout = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 for(let i = 0; i < 9; i ++){
   document.getElementsByTagName("span")[i].style = "top: 101%";
 }
@@ -40,23 +41,22 @@ function appear(){
   let type = Math.floor(Math.random() * 3);
   map[pos] = type;
   document.getElementsByTagName("span")[pos].style = "top: 0; transition: top 0.3s; background-color: " + types[type] + ";";
-  setTimeout(function(){disappear(pos);}, 2000);
+  timeout[pos] = setTimeout(function(){disappear(pos);}, 2000);
 }
 
 function disappear(i){
   document.getElementsByTagName("span")[i].style = "top: 101%; transition: top 0.3s; background-color: " + types[map[i]] + ";";
-  if(map[i] > -1){
     map[i] = -1;
-  }
 }
 
 function hit(i){
   if(map[i] > -1){
+    clearTimeout(timeout[i]);
     document.getElementsByTagName("span")[i].style = "top: 101%;";
     score += scores[map[i]];
     document.getElementById("score").innerHTML = "Score: " + score;
     map[i] = -2;
-    setTimeout(function(){map[i] = -1;}, 2000);
+    setTimeout(function(){map[i] = -1}, 100);
   }
 }
 

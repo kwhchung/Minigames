@@ -32,8 +32,8 @@ p{
 }
 
 #map button{
-  margin: 30px 80px;
-  width: 80px;
+  margin: 30px 60px;
+  width: 120px;
   height: 80px;
   border: none;
   background-color: transparent;
@@ -43,7 +43,7 @@ p{
 
 svg{
   position: absolute;
-  left: -25%;
+  left: 0;
   top: 50%;
 }
 
@@ -52,9 +52,10 @@ elipse{
 }
 
 .mole{
-  width: 100%;
+  width: 66.67%;
   height: 100%;
   position: absolute;
+  left: 16.67%;
   top: 0;
   overflow: hidden;
 }
@@ -100,8 +101,8 @@ span{
   }
 
   #map button{
-    width: 14vw;
+    width: 21vw;
     height: 14vw;
-    margin: calc((16vh - 14vw) / 2) 6vw;
+    margin: calc((16vh - 14vw) / 2) 3vw;
   }
 }

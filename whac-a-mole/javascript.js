@@ -53,7 +53,6 @@ function time(){
     appearInterval = setInterval(appear, appearTime[difficulty][2]);
     changeTime ++;
   }else if(seconds <= 0){
-    seconds = 0;
     endGame();
   }
 }
@@ -104,6 +103,9 @@ function hit(i){
     document.getElementById("score").innerHTML = "Score: " + score;
     if(map[i] == 3){
       seconds -= 3;
+      if(seconds < 0){
+        seconds = 0;
+      }
       document.getElementById("time").innerHTML = "Time: " + seconds;
     }
     map[i] = -2;

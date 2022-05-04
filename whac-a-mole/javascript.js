@@ -21,6 +21,11 @@ for(let i = 0; i < 9; i ++){
 
 
 function start(){
+  for(let i = 0; i < 4; i ++){
+    if(document.getElementsByTagName("option")[i].selected == true){
+      difficulty = i;
+    }
+  }
   document.getElementById("startPage").style = "display: inline-block";
   if(firstStart){
     document.getElementById("start").style = "display: none";
@@ -43,6 +48,9 @@ function startCountdown(){
 
 function time(){
   seconds --;
+  if(seconds < 0){
+    seconds = 0;
+  }
   document.getElementById("time").innerHTML = "Time: " + seconds;
   if(seconds <= 40 && changeTime == 0){
     clearInterval(appearInterval);
@@ -52,7 +60,7 @@ function time(){
     clearInterval(appearInterval);
     appearInterval = setInterval(appear, appearTime[difficulty][2]);
     changeTime ++;
-  }else if(seconds <= 0){
+  }else if(seconds == 0){
     endGame();
   }
 }
@@ -130,11 +138,6 @@ function restart(){
   seconds = 60;
   changeTime = 0;
   startCount = 3;
-  for(let i = 0; i < 4; i ++){
-    if(document.getElementsByTagName("option")[i].selected == true){
-      difficulty = i;
-    }
-  }
   document.getElementById("time").innerHTML = "Time: " + seconds;
   document.getElementById("score").innerHTML = "Score: " + score;
   for(let i = 0; i < 9; i ++){

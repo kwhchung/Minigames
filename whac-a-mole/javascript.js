@@ -117,6 +117,7 @@ function endGame(){
   for(let i = 0; i < 9; i ++){
     document.getElementsByTagName("img")[i].style = "top: 101%";
     map[i] = -1;
+    clearTimeout(timeout[i]);
   }
 }
 

@@ -111,6 +111,10 @@ img{
     padding-top: 8vh;
   }
 
+  #startPage{
+    line-height: 75vh;
+  }
+
   p{
     height: 8vh;
     line-height: 8vh;

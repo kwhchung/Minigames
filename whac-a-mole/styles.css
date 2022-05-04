@@ -12,15 +12,40 @@
   text-align: center;
   background-image: url("images/grass.png");
   background-size: contain;
+  position: relative;
+}
+
+#startPage{
+  width: 100%;
+  height: 100%;
+  line-height: 600px;
+  z-index: 1;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url("images/grass.png");
+  background-size: contain;
+  display: inline-block;
+  font-size: 100px;
+  color: #2b1e1d;
+}
+
+#start{
+  width: 100px;
+  height: 75px;
+  font-size: 30px;
 }
 
 p{
   width: 49%;
   height: 50px;
-  margin: 0 0 30px 0;
+  line-height: 50px;
+  margin: 0;
   font-size: 30px;
   padding: 0 100px;
   display: inline-block;
+  color: #2b1e1d;
 }
 
 #time{
@@ -31,10 +56,10 @@ p{
   text-align: right;
 }
 
-#map button{
-  margin: 30px 60px;
+#map button:not(#start){
+  margin: 20px 60px;
   width: 120px;
-  height: 80px;
+  height: 100px;
   border: none;
   background-color: transparent;
   padding: 0;
@@ -47,25 +72,18 @@ svg{
   top: 50%;
 }
 
-elipse{
-  fill: black;
-}
-
 .mole{
-  width: 66.67%;
+  width: 83.33%;
   height: 100%;
   position: absolute;
-  left: 16.67%;
-  top: 0;
+  left: 8.33%;
+  top: 8.33%;
   overflow: hidden;
 }
 
-span{
+img{
   position: relative;
   display: block;
-  width: 100%;
-  height: 100%;
-  background-color: white;
 }
 
 #selectDifficulty{
@@ -95,14 +113,15 @@ span{
 
   p{
     height: 8vh;
+    line-height: 8vh;
     margin-bottom: 1vh;
     padding: 0 30px;
     font-size: 20px;
   }
 
-  #map button{
-    width: 21vw;
-    height: 14vw;
-    margin: calc((16vh - 14vw) / 2) 3vw;
+  #map button:not(#start){
+    width: 20vw;
+    height: 17vw;
+    margin: calc((16vh - 17vw) / 2) 3vw;
   }
 }

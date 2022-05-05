@@ -45,8 +45,8 @@
 td{
   width: 100px;
   height: 90px;
-  line-height: 30px;
-  font-size: 22px;
+  line-height: 35px;
+  font-size: 25px;
   border: none;
   padding: 10px 0;
 }
@@ -54,6 +54,19 @@ td{
 td img{
   position: static;
   margin: auto;
+}
+
+.clock{
+  display: inline-block;
+}
+
+pre{
+  margin: 0;
+}
+
+.clock{
+  position: relative;
+  top: 5px;
 }
 
 #start{
@@ -64,13 +77,13 @@ td img{
   display: block;
 }
 
-p{
+#time, #score{
   width: 49%;
   height: 50px;
   line-height: 100%;
   margin: 0;
   font-size: 30px;
-  padding: 0 100px;
+  padding: 12px 100px;
   display: inline-block;
   color: #2b1e1d;
 }
@@ -156,7 +169,7 @@ img{
     padding: 1vh 0;
   }
 
-  p{
+  #time, #score{
     height: 8vh;
     line-height: 8vh;
     margin-bottom: 1vh;

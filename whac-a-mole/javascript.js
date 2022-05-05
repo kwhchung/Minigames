@@ -1,4 +1,3 @@
-let score = 0;
 let seconds = 60;
 let difficulty = 0;
 let changeTime = 0;
@@ -7,6 +6,7 @@ let startInterval;
 let timeInterval;
 let appearInterval;
 let firstStart = true;
+const score = [0, 0, 0, 0, 0, 0];
 const count = [1, 1, 2, 2];
 const appearTime = [[1500, 1250, 1000], [1000, 750, 500], [1250, 1000, 750], [750, 500, 350]];
 const disappearTime = [2001, 2001, 1501, 1001];
@@ -15,11 +15,9 @@ const scores = [1, 5, 10, -10];
 const types = ["images/mole1.png", "images/mole2.png", "images/mole3.png", "images/bomb.png"];
 const probability = [4, 7, 9, 10];
 let timeout = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-for(let i = 0; i < 9; i ++){
-  document.getElementsByTagName("img")[i].style = "top: 101%";
-  document.getElementsByTagName("img")[i].src = types[i];
+for(let i = 8; i < 17; i ++){
+  document.images[i].style = "top: 101%";
 }
-
 
 function start(){
   for(let i = 0; i < 4; i ++){
@@ -27,10 +25,14 @@ function start(){
       difficulty = i;
     }
   }
-  document.getElementById("startPage").style = "display: inline-block";
   if(firstStart){
-    document.getElementById("start").style = "display: none";
+    document.getElementsByTagName("table")[0].style = "display: none;";
+    document.getElementById("start").style = "display: none;";
     firstStart = false;
+  }else{
+    document.getElementById("startPage").style = "display: inline-block;";
+    document.getElementsByTagName("table")[0].style = "display: none;";
+    document.getElementById("endPage").style = "display: none;";
   }
   startInterval = setInterval(startCountdown, 1000);
 }
@@ -89,27 +91,30 @@ function appear(){
       }
     }
     map[pos] = type;
-    document.getElementsByTagName("img")[pos].src = types[type];
-    document.getElementsByTagName("img")[pos].style = "top: 0; transition: top 0.3s;";
+    document.images[pos + 4].src = types[type];
+    document.images[pos + 4].style = "top: 0; transition: top 0.3s;";
     timeout[pos] = setTimeout(function(){disappear(pos);}, disappearTime[difficulty]);
   }
 }
 
 function disappear(i){
-  document.getElementsByTagName("img")[i].style = "top: 101%; transition: top 0.3s;";
+  document.images[i + 4].style = "top: 101%; transition: top 0.3s;";
   if(map[i] < 3){
-    score --;
-    document.getElementById("score").innerHTML = "Score: " + score;
+    score[0] --;
+    document.getElementById("score").innerHTML = "Score: " + score[0];
+    score[5] ++;
   }
+  map[i] = -2;
   setTimeout(function(){map[i] = -1}, 300);
 }
 
 function hit(i){
   if(map[i] > -1){
     clearTimeout(timeout[i]);
-    document.getElementsByTagName("img")[i].style = "top: 101%;";
-    score += scores[map[i]];
-    document.getElementById("score").innerHTML = "Score: " + score;
+    document.images[i + 4].style = "top: 101%;";
+    score[0] += scores[map[i]];
+    document.getElementById("score").innerHTML = "Score: " + score[0];
+    score[map[i] + 1] ++;
     if(map[i] == 3){
       seconds -= 3;
       if(seconds < 0){
@@ -125,27 +130,34 @@ function hit(i){
 function endGame(){
   clearInterval(timeInterval);
   clearInterval(appearInterval);
+  document.getElementById("endPage").style = "display: inline-block;";
+  document.getElementsByTagName("table")[0].style = "display: table;";
   for(let i = 0; i < 9; i ++){
-    document.getElementsByTagName("img")[i].style = "top: 101%";
+    document.images[i + 4].style = "top: 101%;";
     map[i] = -1;
     clearTimeout(timeout[i]);
+    if(i < 6){
+      document.getElementsByTagName("table")[0].getElementsByTagName("td")[i * 2 + 1].innerHTML = score[i];
+    }
   }
 }
 
 function restart(){
   clearInterval(appearInterval);
   clearInterval(timeInterval);
-  score = 0;
   seconds = 60;
   changeTime = 0;
   startCount = 3;
   document.getElementById("time").innerHTML = "Time: " + seconds;
-  document.getElementById("score").innerHTML = "Score: " + score;
   for(let i = 0; i < 9; i ++){
-    document.getElementsByTagName("img")[i].style = "top: 101%";
+    document.images[i + 4].style = "top: 101%";
     map[i] = -1;
     clearTimeout(timeout[i]);
+    if(i < 6){
+      score[i] = 0;
+    }
   }
+  document.getElementById("score").innerHTML = "Score: " + score[0];
   clearInterval(startInterval);
   start();
 }

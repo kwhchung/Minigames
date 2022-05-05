@@ -8,7 +8,7 @@ let timeInterval;
 let appearInterval;
 let firstStart = true;
 const count = [1, 1, 2, 2];
-const appearTime = [[1250, 1000, 750], [1000, 750, 500], [1250, 1000, 750], [750, 500, 350]];
+const appearTime = [[1500, 1250, 1000], [1000, 750, 500], [1250, 1000, 750], [750, 500, 350]];
 const disappearTime = [2001, 2001, 1501, 1001];
 const map = [-1, -1, -1, -1, -1, -1, -1, -1, -1];
 const scores = [1, 5, 10, -10];

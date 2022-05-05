@@ -15,7 +15,7 @@
   position: relative;
 }
 
-#startPage{
+#startPage, #endPage{
   width: 100%;
   height: 100%;
   line-height: 600px;
@@ -26,21 +26,48 @@
   left: 0;
   background-image: url("images/grass.png");
   background-size: contain;
-  display: inline-block;
-  font-size: 100px;
   color: #2b1e1d;
+}
+
+#startPage{
+  font-size: 100px;
+  display: inline-block;
+}
+
+#startPage table{
+  margin: 5% auto;
+}
+
+#endPage table{
+  margin: 3% auto;
+}
+
+td{
+  width: 100px;
+  height: 90px;
+  line-height: 30px;
+  font-size: 22px;
+  border: none;
+  padding: 10px 0;
+}
+
+td img{
+  position: static;
+  margin: auto;
 }
 
 #start{
   width: 100px;
   height: 75px;
   font-size: 30px;
+  margin: auto;
+  display: block;
 }
 
 p{
   width: 49%;
   height: 50px;
-  line-height: 50px;
+  line-height: 100%;
   margin: 0;
   font-size: 30px;
   padding: 0 100px;
@@ -87,16 +114,16 @@ img{
 }
 
 #selectDifficulty{
-  font-size: 18px;
+  font-size: 22px;
   text-align: center;
 }
 
 #difficulty{
-  font-size: 18px;
+  font-size: 22px;
 }
 
 #restart{
-  font-size: 18px;
+  font-size: 22px;
   margin-left: 20px;
 }
 
@@ -113,6 +140,20 @@ img{
 
   #startPage{
     line-height: 75vh;
+  }
+
+  #startPage table{
+    margin: calc((75vh - 75px - 80vw) / 4) auto;
+  }
+
+  #endPage table{
+    margin: calc((75vh - 120vw) / 2) auto;
+  }
+
+  td{
+    width: 20vw;
+    height: 20vw;
+    padding: 1vh 0;
   }
 
   p{

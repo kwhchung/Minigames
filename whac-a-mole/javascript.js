@@ -17,6 +17,7 @@ const probability = [4, 7, 9, 10];
 let timeout = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 for(let i = 0; i < 9; i ++){
   document.getElementsByTagName("img")[i].style = "top: 101%";
+  document.getElementsByTagName("img")[i].src = types[i];
 }
 
 

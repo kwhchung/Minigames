@@ -31,7 +31,7 @@
         <td>
           <img src = "images/bomb.png" height = "100%">
         </td>
-        <td>-10<br>-3</td>
+        <td>-10<br><img class = "clock" src = "images/clock.png" height = "28px"> -3</td>
       </tr>
     </table>
     <button id = "start" onclick = "start()">Start</button>
@@ -72,8 +72,10 @@
       </tr>
     </table>
   </div>
-  <p id = "time">Time: 60</p>
-  <p id = "score">Score: 0</p>
+  <div id = "time">
+    <img src = "images/clock.png" class = "clock" height = "28px"> 60
+  </div>
+  <div id = "score">Score: 0</div>
   <button ontouchstart = "hit(0)" onclick = "hit(0)">
     <svg height = "100%" width = "100%">
       <ellipse cx = "50%" cy = "50%" rx = "50%" ry = "30%" style = "fill: #2b1e1d"/>

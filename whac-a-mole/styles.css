@@ -75,10 +75,10 @@ pre{
   font-size: 30px;
   margin: auto;
   display: block;
+  text-align: center;
 }
 
 #time, #score{
-  width: 49%;
   height: 50px;
   line-height: 100%;
   margin: 0;
@@ -90,10 +90,12 @@ pre{
 
 #time{
   text-align: left;
+  width: 39%;
 }
 
 #score{
   text-align: right;
+  width: 59%
 }
 
 #map button:not(#start){

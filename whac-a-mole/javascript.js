@@ -15,8 +15,8 @@ const scores = [1, 5, 10, -10];
 const types = ["images/mole1.png", "images/mole2.png", "images/mole3.png", "images/bomb.png"];
 const probability = [4, 7, 9, 10];
 let timeout = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-for(let i = 10; i < 19; i ++){
-  document.images[i].style = "top: 101%";
+for(let i = 0; i < 9; i ++){
+  document.getElementsByClassName("mole")[i].getElementsByTagName("img")[0].style = "top: 101%";
 }
 
 function start(){
@@ -91,14 +91,14 @@ function appear(){
       }
     }
     map[pos] = type;
-    document.images[pos + 5].src = types[type];
-    document.images[pos + 5].style = "top: 0; transition: top 0.3s;";
+    document.getElementsByClassName("mole")[pos].getElementsByTagName("img")[0].src = types[type];
+    document.getElementsByClassName("mole")[pos].getElementsByTagName("img")[0].style = "top: 0; transition: top 0.3s;";
     timeout[pos] = setTimeout(function(){disappear(pos);}, disappearTime[difficulty]);
   }
 }
 
 function disappear(i){
-  document.images[i + 5].style = "top: 101%; transition: top 0.3s;";
+  document.getElementsByClassName("mole")[i].getElementsByTagName("img")[0].style = "top: 101%; transition: top 0.3s;";
   if(map[i] < 3){
     score[0] --;
     document.getElementById("score").innerHTML = "Score: " + score[0];
@@ -111,7 +111,7 @@ function disappear(i){
 function hit(i){
   if(map[i] > -1){
     clearTimeout(timeout[i]);
-    document.images[i + 5].style = "top: 101%;";
+    document.getElementsByClassName("mole")[i].getElementsByTagName("img")[0].style = "top: 101%;";
     score[0] += scores[map[i]];
     document.getElementById("score").innerHTML = "Score: " + score[0];
     score[map[i] + 1] ++;
@@ -133,7 +133,7 @@ function endGame(){
   document.getElementById("endPage").style = "display: inline-block;";
   document.getElementsByTagName("table")[0].style = "display: table;";
   for(let i = 0; i < 9; i ++){
-    document.images[i + 5].style = "top: 101%;";
+    document.getElementsByClassName("mole")[i].getElementsByTagName("img")[0].style = "top: 101%;";
     map[i] = -1;
     clearTimeout(timeout[i]);
     if(i < 6){
@@ -150,7 +150,7 @@ function restart(){
   startCount = 3;
   document.getElementById("time").innerHTML = "<img src = 'images/clock.png' class = 'clock' height = '28px'> " + seconds;
   for(let i = 0; i < 9; i ++){
-    document.images[i + 5].style = "top: 101%";
+    document.getElementsByClassName("mole")[i].getElementsByTagName("img")[0].style = "top: 101%";
     map[i] = -1;
     clearTimeout(timeout[i]);
     if(i < 6){

@@ -116,7 +116,6 @@ function drag(i, j){
   }else{
     document.getElementById("display").getElementsByTagName("img")[j].style.opacity = "0";
   }
-  console.log(event);
 }
 
 function endDrag(){

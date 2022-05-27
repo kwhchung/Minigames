@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel = "stylesheet" href = "styles.css">
+<meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+<title>Solitaire</title>
+</head>
+<body ondragover = "allowDrop()">
+<main>
+  <table>
+    <tr>
+      <td id = "deck">
+        <div class = "place" onclick = "displayDeck()"></div>
+      </td>
+      <td id = "display" colspan = "2">
+        <div class = "place"></div>
+      </td>
+      <td class = "final" ondrop = "finalDrop(0)">
+        <div class = "place"></div>
+      </td>
+      <td class = "final" ondrop = "finalDrop(1)">
+        <div class = "place"></div>
+      </td>
+      <td class = "final" ondrop = "finalDrop(2)">
+        <div class = "place"></div>
+      </td>
+      <td class = "final" ondrop = "finalDrop(3)">
+        <div class = "place"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class = "stack">
+        <div class = "droppable" ondrop = "stackDrop(0)">
+          <div class = "place"></div>
+        </div>
+      </td>
+      <td class = "stack">
+        <div class = "droppable" ondrop = "stackDrop(1)">
+          <div class = "place"></div>
+        </div>
+      </td>
+      <td class = "stack">
+        <div class = "droppable" ondrop = "stackDrop(2)">
+          <div class = "place"></div>
+        </div>
+      </td>
+      <td class = "stack">
+        <div class = "droppable" ondrop = "stackDrop(3)">
+          <div class = "place"></div>
+        </div>
+      </td>
+      <td class = "stack">
+        <div class = "droppable" ondrop = "stackDrop(4)">
+          <div class = "place"></div>
+        </div>
+      </td>
+      <td class = "stack">
+        <div class = "droppable" ondrop = "stackDrop(5)">
+          <div class = "place"></div>
+        </div>
+      </td>
+      <td class = "stack">
+        <div class = "droppable" ondrop = "stackDrop(6)">
+          <div class = "place"></div>
+        </div>
+      </td>
+    </tr>
+  </table>
+</main>
+<button id = "restart" onclick = "restart()">Restart</button>
+</body>
+<script src = "javascript.js"></script>
+</html>

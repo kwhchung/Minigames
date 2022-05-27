@@ -1,0 +1,53 @@
+*{
+  box-sizing: border-box;
+}
+
+main{
+  width: 900px;
+  height: 650px;
+  margin: 30px auto 20px;
+  background-color: DarkGreen;
+  padding: 15px 30px;
+}
+
+table{
+  border-spacing: 0;
+  overflow: visible;
+}
+
+td{
+  width: 120px;
+  height: 130px;
+  padding: 10px 22.5px;
+}
+
+.stack{
+  position: relative;
+}
+
+.droppable{
+  width: 120px;
+  height: 110px;
+  padding: 10px 22.5px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.place{
+  width: 75px;
+  height: 110px;
+  border: 1px solid grey;
+  border-radius: 6px;
+  position: relative;
+}
+
+#display{
+  padding-right: 142.5px;
+}
+
+#restart{
+  display: block;
+  margin: auto;
+  font-size: 18px;
+}

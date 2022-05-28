@@ -48,7 +48,7 @@ function start(){
         card.style.top = (20 * j) + "px";
         card.setAttribute("ondragstart", "drag(" + i + ", " + j + ")");
         card.setAttribute("ondragend", "endDrag()");
-        card.setAttribute("ontouchmove", "touchDrag(" + i + ", " + j + ")");
+        card.setAttribute("ontouchmove", "drag(" + i + ", " + j + ")");
         card.setAttribute("ontouchend", "touchDrop()");
       }else{
         card = document.createElement("img");
@@ -85,7 +85,7 @@ function displayDeck(){
     card.style.position = "absolute";
     card.setAttribute("ondragstart", "drag(-1, " + deckPos + ")");
     card.setAttribute("ondragend", "endDrag()");
-    card.setAttribute("ontouchmove", "touchDrag(-1, " + deckPos + ")");
+    card.setAttribute("ontouchmove", "drag(-1, " + deckPos + ")");
     card.setAttribute("ontouchend", "touchDrop()");
     document.getElementById("display").getElementsByClassName("place")[0].appendChild(card);
   }
@@ -105,7 +105,7 @@ function displayCard(i, j){
     document.getElementsByClassName("stack")[i].getElementsByTagName("img")[j].draggable = "true";
     document.getElementsByClassName("stack")[i].getElementsByTagName("img")[j].setAttribute("ondragstart", "drag(" + i + ", " + j + ")");
     document.getElementsByClassName("stack")[i].getElementsByTagName("img")[j].setAttribute("ondragend", "endDrag()");
-    document.getElementsByClassName("stack")[i].getElementsByTagName("img")[j].setAttribute("ontouchmove", "touchDrag(" + i + ", " + j + ")");
+    document.getElementsByClassName("stack")[i].getElementsByTagName("img")[j].setAttribute("ontouchmove", "drag(" + i + ", " + j + ")");
     document.getElementsByClassName("stack")[i].getElementsByTagName("img")[j].setAttribute("ontouchend", "touchDrop()");
     document.getElementsByClassName("stack")[i].getElementsByTagName("img")[j].removeAttribute("onclick");
   }
@@ -142,11 +142,6 @@ function endDrag(){
   for(let k = 0; k < 2; k ++){
     dragged[k] = -1;
   }
-}
-
-function touchDrag(i, j){
-  event.preventDefault();
-  drag(i, j);
 }
 
 function touchDrop(){
@@ -191,7 +186,7 @@ function stackDrop(i){
       document.getElementsByClassName("final")[dragged[0] - 7].getElementsByTagName("img")[dragged[1]].style.top = 20 * (stacks[i].length - 1) + "px";
       document.getElementsByClassName("final")[dragged[0] - 7].getElementsByTagName("img")[dragged[1]].style.opacity = "1";
       document.getElementsByClassName("final")[dragged[0] - 7].getElementsByTagName("img")[dragged[1]].setAttribute("ondragstart", "drag(" + i + ", " + (stacks[i].length - 1) + ")");
-      document.getElementsByClassName("final")[dragged[0] - 7].getElementsByTagName("img")[dragged[1]].setAttribute("ontouchmove", "touchDrag(" + i + ", " + (stacks[i].length - 1) + ")");
+      document.getElementsByClassName("final")[dragged[0] - 7].getElementsByTagName("img")[dragged[1]].setAttribute("ontouchmove", "drag(" + i + ", " + (stacks[i].length - 1) + ")");
       document.getElementsByClassName("stack")[i].getElementsByClassName("place")[0].appendChild(document.getElementsByClassName("final")[dragged[0] - 7].getElementsByTagName("img")[dragged[1]]);
       document.getElementsByClassName("droppable")[i].style.height = document.getElementsByClassName("place")[0].offsetHeight * 2 + 20 * (stacks[i].length - 1) + "px";
       dropped = true;
@@ -222,7 +217,7 @@ function stackDrop(i){
         document.getElementsByClassName("stack")[dragged[0]].getElementsByTagName("img")[dragged[1]].style.top = 20 * (stacks[i].length - 1) + "px";
         document.getElementsByClassName("stack")[dragged[0]].getElementsByTagName("img")[dragged[1]].style.opacity = "1";
         document.getElementsByClassName("stack")[dragged[0]].getElementsByTagName("img")[dragged[1]].setAttribute("ondragstart", "drag(" + i + ", " + (stacks[i].length - 1) + ")");
-        document.getElementsByClassName("stack")[dragged[0]].getElementsByTagName("img")[dragged[1]].setAttribute("ontouchmove", "touchDrag(" + i + ", " + (stacks[i].length - 1) + ")");
+        document.getElementsByClassName("stack")[dragged[0]].getElementsByTagName("img")[dragged[1]].setAttribute("ontouchmove", "drag(" + i + ", " + (stacks[i].length - 1) + ")");
         document.getElementsByClassName("stack")[i].getElementsByClassName("place")[0].appendChild(document.getElementsByClassName("stack")[dragged[0]].getElementsByTagName("img")[dragged[1]]);
         document.getElementsByClassName("droppable")[i].style.height = document.getElementsByClassName("place")[0].offsetHeight * 2 + 20 * (stacks[i].length - 1) + "px";
       }
@@ -253,7 +248,7 @@ function stackDrop(i){
       document.getElementById("display").getElementsByTagName("img")[dragged[1]].style.top = 20 * (stacks[i].length - 1) + "px";
       document.getElementById("display").getElementsByTagName("img")[dragged[1]].style.opacity = "1";
       document.getElementById("display").getElementsByTagName("img")[dragged[1]].setAttribute("ondragstart", "drag(" + i + ", " + (stacks[i].length - 1) + ")");
-      document.getElementById("display").getElementsByTagName("img")[dragged[1]].setAttribute("ontouchmove", "touchDrag(" + i + ", " + (stacks[i].length - 1) + ")");
+      document.getElementById("display").getElementsByTagName("img")[dragged[1]].setAttribute("ontouchmove", "drag(" + i + ", " + (stacks[i].length - 1) + ")");
       document.getElementsByClassName("stack")[i].getElementsByClassName("place")[0].appendChild(document.getElementById("display").getElementsByTagName("img")[dragged[1]]);
       document.getElementsByClassName("droppable")[i].style.height = document.getElementsByClassName("place")[0].offsetHeight * 2 + 20 * (stacks[i].length - 1) + "px";
       dropped = true;
@@ -280,7 +275,7 @@ function finalDrop(i){
       document.getElementsByClassName("final")[dragged[0] - 7].getElementsByTagName("img")[dragged[1]].style.top = "0";
       document.getElementsByClassName("final")[dragged[0] - 7].getElementsByTagName("img")[dragged[1]].style.opacity = "1";
       document.getElementsByClassName("final")[dragged[0] - 7].getElementsByTagName("img")[dragged[1]].setAttribute("ondragstart", "drag(" + (i + 7) + ", " + (finals[i].length - 1) + ")");
-      document.getElementsByClassName("final")[dragged[0] - 7].getElementsByTagName("img")[dragged[1]].setAttribute("ontouchmove", "touchDrag(" + (i + 7) + ", " + (finals[i].length - 1) + ")");
+      document.getElementsByClassName("final")[dragged[0] - 7].getElementsByTagName("img")[dragged[1]].setAttribute("ontouchmove", "drag(" + (i + 7) + ", " + (finals[i].length - 1) + ")");
       document.getElementsByClassName("final")[i].getElementsByClassName("place")[0].appendChild(document.getElementsByClassName("final")[dragged[0] - 7].getElementsByTagName("img")[dragged[1]]);
       dropped = true;
     }
@@ -302,7 +297,7 @@ function finalDrop(i){
       document.getElementsByClassName("stack")[dragged[0]].getElementsByTagName("img")[dragged[1]].style.top = "0";
       document.getElementsByClassName("stack")[dragged[0]].getElementsByTagName("img")[dragged[1]].style.opacity = "1";
       document.getElementsByClassName("stack")[dragged[0]].getElementsByTagName("img")[dragged[1]].setAttribute("ondragstart", "drag(" + (i + 7) + ", " + (finals[i].length - 1) + ")");
-      document.getElementsByClassName("stack")[dragged[0]].getElementsByTagName("img")[dragged[1]].setAttribute("ontouchmove", "touchDrag(" + (i + 7) + ", " + (finals[i].length - 1) + ")");
+      document.getElementsByClassName("stack")[dragged[0]].getElementsByTagName("img")[dragged[1]].setAttribute("ontouchmove", "drag(" + (i + 7) + ", " + (finals[i].length - 1) + ")");
       document.getElementsByClassName("final")[i].getElementsByClassName("place")[0].appendChild(document.getElementsByClassName("stack")[dragged[0]].getElementsByTagName("img")[dragged[1]]);
       dropped = true;
     }
@@ -323,7 +318,7 @@ function finalDrop(i){
       document.getElementById("display").getElementsByTagName("img")[dragged[1]].style.top = "0";
       document.getElementById("display").getElementsByTagName("img")[dragged[1]].style.opacity = "1";
       document.getElementById("display").getElementsByTagName("img")[dragged[1]].setAttribute("ondragstart", "drag(" + (i + 7) + ", " + (finals[i].length - 1) + ")");
-      document.getElementById("display").getElementsByTagName("img")[dragged[1]].setAttribute("ontouchmove", "touchDrag(" + (i + 7) + ", " + (finals[i].length - 1) + ")");
+      document.getElementById("display").getElementsByTagName("img")[dragged[1]].setAttribute("ontouchmove", "drag(" + (i + 7) + ", " + (finals[i].length - 1) + ")");
       document.getElementsByClassName("final")[i].getElementsByClassName("place")[0].appendChild(document.getElementById("display").getElementsByTagName("img")[dragged[1]]);
       dropped = true;
     }

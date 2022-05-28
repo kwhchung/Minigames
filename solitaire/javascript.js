@@ -58,7 +58,7 @@ function start(){
         card.setAttribute("onclick", "displayCard(" + i + ", " + j + ")");
       }
       document.getElementsByClassName("stack")[i].getElementsByClassName("place")[0].appendChild(card);
-      document.getElementsByClassName("droppable")[i].style.height = 200 + 20 * (stacks[i].length - 1) + "px";
+      document.getElementsByClassName("droppable")[i].style.height = document.getElementsByClassName("place")[0].offsetHeight * 2 + 20 * (stacks[i].length - 1) + "px";
     }
   }
   for(let i = 0; i < 24; i ++){
@@ -168,7 +168,7 @@ function stackDrop(i){
       document.getElementsByClassName("final")[dragged[0] - 7].getElementsByTagName("img")[dragged[1]].style.opacity = "1";
       document.getElementsByClassName("final")[dragged[0] - 7].getElementsByTagName("img")[dragged[1]].setAttribute("ondragstart", "drag(" + i + ", " + (stacks[i].length - 1) + ")");
       document.getElementsByClassName("stack")[i].getElementsByClassName("place")[0].appendChild(document.getElementsByClassName("final")[dragged[0] - 7].getElementsByTagName("img")[dragged[1]]);
-      document.getElementsByClassName("droppable")[i].style.height = 200 + 20 * (stacks[i].length - 1) + "px";
+      document.getElementsByClassName("droppable")[i].style.height = document.getElementsByClassName("place")[0].offsetHeight * 2 + 20 * (stacks[i].length - 1) + "px";
       dropped = true;
     }
   }else if(dragged[0] > -1){
@@ -198,7 +198,7 @@ function stackDrop(i){
         document.getElementsByClassName("stack")[dragged[0]].getElementsByTagName("img")[dragged[1]].style.opacity = "1";
         document.getElementsByClassName("stack")[dragged[0]].getElementsByTagName("img")[dragged[1]].setAttribute("ondragstart", "drag(" + i + ", " + (stacks[i].length - 1) + ")");
         document.getElementsByClassName("stack")[i].getElementsByClassName("place")[0].appendChild(document.getElementsByClassName("stack")[dragged[0]].getElementsByTagName("img")[dragged[1]]);
-        document.getElementsByClassName("droppable")[i].style.height = 200 + 20 * (stacks[i].length - 1) + "px";
+        document.getElementsByClassName("droppable")[i].style.height = document.getElementsByClassName("place")[0].offsetHeight * 2 + 20 * (stacks[i].length - 1) + "px";
       }
       dropped = true;
     }
@@ -228,7 +228,7 @@ function stackDrop(i){
       document.getElementById("display").getElementsByTagName("img")[dragged[1]].style.opacity = "1";
       document.getElementById("display").getElementsByTagName("img")[dragged[1]].setAttribute("ondragstart", "drag(" + i + ", " + (stacks[i].length - 1) + ")");
       document.getElementsByClassName("stack")[i].getElementsByClassName("place")[0].appendChild(document.getElementById("display").getElementsByTagName("img")[dragged[1]]);
-      document.getElementsByClassName("droppable")[i].style.height = 200 + 20 * (stacks[i].length - 1) + "px";
+      document.getElementsByClassName("droppable")[i].style.height = document.getElementsByClassName("place")[0].offsetHeight * 2 + 20 * (stacks[i].length - 1) + "px";
       dropped = true;
     }
   }

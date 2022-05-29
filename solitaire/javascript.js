@@ -142,14 +142,13 @@ function drag(i, j){
       document.getElementById("ghostPlace").appendChild(card);
       document.getElementById("display").getElementsByTagName("img")[j].style.opacity = "0";
     }
-    event.dataTransfer.setDragImage(document.getElementById("ghost"), 0, 0);
-    document.getElementById("ghost").style.display = "none";
+    event.dataTransfer.setDragImage(document.getElementById("ghost"), document.getElementById("ghost").offsetHeight / 2, document.getElementById("ghost").offsetWidth / 2);
+    document.getElementById("ghost").style.left = "-100px";
   }
 }
 
 function endDrag(){
   document.getElementById("ghostPlace").innerHTML = "";
-  document.getElementById("ghost").style.display = "block";
   if(!dropped){
     dropped = true;
     if(dragged[0] > 6){

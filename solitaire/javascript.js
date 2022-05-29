@@ -340,6 +340,7 @@ function win(){
 function restart(){
   picked.splice(0, picked.length);
   deck.splice(0, deck.length);
+  deckPos = -1;
   for(let i = 0; i < 52; i ++){
     cards[i].display = false;
     if(i < 13){

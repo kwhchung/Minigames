@@ -8,6 +8,7 @@ main{
   margin: 30px auto 20px;
   background-color: DarkGreen;
   padding: 15px 30px;
+  position: relative;
 }
 
 table{
@@ -39,6 +40,16 @@ td{
   border: 1px solid grey;
   border-radius: 5px;
   position: relative;
+}
+
+#end{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  overflow: hidden;
 }
 
 #restart{

@@ -14,9 +14,17 @@ const finals = [[], [], [], []];
 const stacks = [[], [], [], [], [], [], []];
 const picked = [];
 const dragged = [-1, -1];
+const mainRect = document.getElementsByTagName("main")[0].getBoundingClientRect();
 let deckPos = -1;
 let dropped = true;
 let dragPos = -1;
+let endPos = 0;
+let endInterval = 0;
+let x = 0;
+let y = 0;
+let a = 1;
+let endRect = 0;
+let aIncreased = false;
 
 for(let i = 0; i < 4; i ++){
   for(let j = 1; j <= 13; j ++){
@@ -382,7 +390,7 @@ function finalDrop(i){
     }
   }
   if(win()){
-    console.log("win");
+    end();
   }
 }
 
@@ -395,7 +403,46 @@ function win(){
   return true;
 }
 
+function end(){
+  document.getElementById("end").style.display = "block";
+  endRect = document.getElementsByClassName("final")[endPos].getElementsByClassName("place")[0].getBoundingClientRect();
+  x = endRect.x - mainRect.x;
+  endInterval = setInterval(endAnimation, 10);
+}
+
+function endAnimation(){
+  y = mainRect.height - endRect.height - a * Math.abs(Math.cos((x - endRect.x + mainRect.x - 1) / (mainRect.height - endRect.height - endRect.y + mainRect.y) * 10)) * (mainRect.height - endRect.height - endRect.y + mainRect.y);
+  if(!aIncreased && y >= mainRect.height - endRect.height - 15){
+    a *= 2/3;
+    aIncreased = true;
+  }else if(y < mainRect.height - endRect.height - 15){
+    aIncreased = false;
+  }
+  let card = document.createElement("img");
+  card.src = finals[endPos][finals[endPos].length - 1].image;
+  card.setAttribute("width", endRect.width + "px");
+  card.setAttribute("height", endRect.height + "px");
+  card.style.position = "absolute";
+  card.style.top = y + "px";
+  card.style.left = x + "px";
+  document.getElementById("end").appendChild(card);
+  x --;
+  if(x < -endRect.width){
+    clearInterval(endInterval);
+    endPos ++;
+    if(endPos < 4){
+      endRect = document.getElementsByClassName("final")[endPos].getElementsByClassName("place")[0].getBoundingClientRect();
+      x = endRect.x - mainRect.x;
+      a = 1;
+      endInterval = setInterval(endAnimation, 10);
+    }
+  }
+}
+
 function restart(){
+  clearInterval(endInterval);
+  document.getElementById("end").innerHTML = "";
+  document.getElementById("end").style.display = "none";
   picked.splice(0, picked.length);
   deck.splice(0, deck.length);
   deckPos = -1;

@@ -73,26 +73,30 @@ td{
 }
 
 @media only screen and (max-width: 768px){
+  body{
+    margin: 0;
+  }
+
   main{
-    width: 95vw;
+    width: 100vw;
     height: 80vh;
     margin-top: 0;
-    padding: 5px;
+    padding: 3px;
   }
 
   td{
-    width: calc((95vw - 10px) / 7);
-    height: calc((95vw - 10px) / 5 + 15px);
-    padding: 15px 5px;
+    width: calc((100vw - 6px) / 7);
+    height: calc((100vw - 6px) / 5 + 24px);
+    padding: 15px 3px;
   }
 
   .droppable{
-    width: calc((95vw - 10px) / 7);
-    padding: 15px 5px;
+    width: calc((100vw - 6px) / 7);
+    padding: 15px 3px;
   }
 
   .place, #ghost{
-    width: calc((95vw - 10px) / 7 - 10px);
-    height: calc((95vw - 10px) / 5 - 10px);
+    width: calc((100vw - 6px) / 7 - 6px);
+    height: calc((100vw - 6px) / 5 - 6px);
   }
 }

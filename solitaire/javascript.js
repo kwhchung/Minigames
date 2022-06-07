@@ -157,6 +157,7 @@ function drag(i, j){
 
 function endDrag(){
   document.getElementById("ghostPlace").innerHTML = "";
+  document.getElementById("ghost").style.left = "-200px";
   if(!dropped){
     dropped = true;
     if(dragged[0] > 6){

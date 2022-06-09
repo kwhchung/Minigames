@@ -52,10 +52,18 @@ td{
   overflow: hidden;
 }
 
+#selectMode{
+  font-size: 20px;
+  text-align: center;
+}
+
+#mode{
+  font-size: 20px;
+}
+
 #restart{
-  display: block;
-  margin: auto;
-  font-size: 18px;
+  font-size: 20px;
+  margin-left: 20px;
 }
 
 #ghost{

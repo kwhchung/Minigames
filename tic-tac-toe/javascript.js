@@ -4,7 +4,7 @@ let computerRound = 0;
 
 function changeCharacter(i){
   restart();
-  document.getElementsByClassName("selectCharacter")[i].style = "background-color: #eee; border-bottom: 2px solid black;";
+  document.getElementsByClassName("selectCharacter")[i].style = "background-color: MediumTurquoise; border-bottom: 2px solid DarkCyan;";
   document.getElementsByTagName("input")[i].disabled = true;
   document.getElementsByClassName("selectCharacter")[1 - i].style = "";
   document.getElementsByTagName("input")[1 - i].disabled = false;
@@ -221,16 +221,27 @@ function restart(){
   }
   document.getElementById("result").innerHTML = "";
   if(document.getElementsByTagName("input")[1].checked == true){
-    let i = Math.floor(Math.random() * 9);
-    if(i >= 4){
-      map[1][1] = 2;
-      document.getElementsByTagName("button")[4].innerHTML = "<img src = 'images/cross.png' width = '100%' height = '100%'>";
-      document.getElementsByTagName("button")[4].disabled = true;
-    }else{
-      map[corners[i][0]][corners[i][1]] = 2;
-      document.getElementsByTagName("button")[corners[i][0] * 3 + corners[i][1]].innerHTML = "<img src = 'images/cross.png' width = '100%' height = '100%'>";
-      document.getElementsByTagName("button")[corners[i][0] * 3 + corners[i][1]].disabled = true;
+    for(let i = 0; i < 9; i ++){
+      document.getElementsByTagName("button")[i].disabled = true;
     }
-
+    computerRound = setTimeout(function(){
+      let i = Math.floor(Math.random() * 9);
+      if(i >= 4){
+        map[1][1] = 2;
+        document.getElementsByTagName("button")[4].innerHTML = "<img src = 'images/cross.png' width = '100%' height = '100%'>";
+        document.getElementsByTagName("button")[4].disabled = true;
+      }else{
+        map[corners[i][0]][corners[i][1]] = 2;
+        document.getElementsByTagName("button")[corners[i][0] * 3 + corners[i][1]].innerHTML = "<img src = 'images/cross.png' width = '100%' height = '100%'>";
+        document.getElementsByTagName("button")[corners[i][0] * 3 + corners[i][1]].disabled = true;
+      }
+      for(let i = 0; i < 3; i ++){
+        for(let j = 0; j < 3; j ++){
+          if(map[i][j] == 0){
+            document.getElementsByTagName("button")[i * 3 + j].disabled = false;
+          }
+        }
+      }
+    }, 500);
   }
 }

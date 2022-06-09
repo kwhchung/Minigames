@@ -25,6 +25,7 @@ let y = 0;
 let a = 1;
 let endRect = 0;
 let aIncreased = false;
+let mode = 0;
 
 for(let i = 0; i < 4; i ++){
   for(let j = 1; j <= 13; j ++){
@@ -84,23 +85,52 @@ function start(){
 }
 
 function displayDeck(){
-  deckPos ++;
-  if(deckPos >= 0 && deckPos < deck.length){
-    let card = document.createElement("img");
-    card.src = deck[deckPos].image;
-    card.setAttribute("width", "100%");
-    card.setAttribute("height", "100%");
-    card.style.position = "absolute";
-    card.setAttribute("ondragstart", "drag(-1, " + deckPos + ")");
-    card.setAttribute("ondragend", "endDrag()");
-    card.setAttribute("ontouchmove", "touchDrag(-1, " + deckPos + ")");
-    card.setAttribute("ontouchend", "touchDrop()");
-    document.getElementById("display").getElementsByClassName("place")[0].appendChild(card);
+  if(mode == 0){
+    deckPos ++;
+    if(deckPos >= 0 && deckPos < deck.length){
+      if(deckPos > 0){
+        document.getElementById("display").getElementsByTagName("img")[deckPos - 1].setAttribute("draggable", "false");
+        document.getElementById("display").getElementsByTagName("img")[deckPos - 1].removeAttribute("ontouchmove");
+      }
+      let card = document.createElement("img");
+      card.src = deck[deckPos].image;
+      card.setAttribute("width", "100%");
+      card.setAttribute("height", "100%");
+      card.style.position = "absolute";
+      card.setAttribute("ondragstart", "drag(-1, " + deckPos + ")");
+      card.setAttribute("ondragend", "endDrag()");
+      card.setAttribute("ontouchmove", "touchDrag(-1, " + deckPos + ")");
+      card.setAttribute("ontouchend", "touchDrop()");
+      document.getElementById("display").getElementsByClassName("place")[0].appendChild(card);
+    }
+  }else{
+    document.getElementById("display").getElementsByClassName("place")[0].innerHTML = "";
+    for(let i = 0; i < 3; i ++){
+      deckPos ++;
+      if(deckPos == deck.length){
+        break;
+      }
+      let card = document.createElement("img");
+      card.src = deck[deckPos].image;
+      card.setAttribute("width", "100%");
+      card.setAttribute("height", "100%");
+      card.style.position = "absolute";
+      card.style.left = 20 * i + "px";
+      card.setAttribute("ondragstart", "drag(-1, " + deckPos + ")");
+      card.setAttribute("ondragend", "endDrag()");
+      card.setAttribute("ontouchend", "touchDrop()");
+      if(i == 2){
+        card.setAttribute("ontouchmove", "touchDrag(-1, " + deckPos + ")");
+      }else{
+        card.setAttribute("draggable", "false");
+      }
+      document.getElementById("display").getElementsByClassName("place")[0].appendChild(card);
+    }
   }
-  if(deckPos == deck.length - 1){
+  if(deckPos >= deck.length - 1){
     document.getElementById("deck").getElementsByClassName("place")[0].innerHTML = "";
   }
-  if(deckPos == deck.length){
+  if(deckPos >= deck.length){
     deckPos = -1;
     document.getElementById("deck").getElementsByClassName("place")[0].innerHTML = "<img src = 'images/back.png' width = '100%' height = '100%' draggable = 'false'>";
     document.getElementById("display").getElementsByClassName("place")[0].innerHTML = "";
@@ -148,7 +178,7 @@ function drag(i, j){
       card.setAttribute("width", "100%");
       card.setAttribute("height", "100%");
       document.getElementById("ghostPlace").appendChild(card);
-      document.getElementById("display").getElementsByTagName("img")[j].style.opacity = "0";
+      document.getElementById("display").getElementsByClassName("place")[0].lastElementChild.style.opacity = "0";
     }
     event.dataTransfer.setDragImage(document.getElementById("ghost"), document.getElementById("ghost").offsetHeight / 2, document.getElementById("ghost").offsetWidth / 2);
     document.getElementById("ghost").style.left = "-100px";
@@ -167,7 +197,7 @@ function endDrag(){
         document.getElementsByClassName("stack")[dragged[0]].getElementsByTagName("img")[k].style.opacity = "1";
       }
     }else{
-      document.getElementById("display").getElementsByTagName("img")[dragged[1]].style.opacity = "1";
+      document.getElementById("display").getElementsByClassName("place")[0].lastElementChild.style.opacity = "1";
     }
   }
   for(let k = 0; k < 2; k ++){
@@ -312,11 +342,16 @@ function stackDrop(i){
       stacks[i].push(deck[dragged[1]]);
       deck.splice(dragged[1], 1);
       deckPos --;
-      document.getElementById("display").getElementsByTagName("img")[dragged[1]].style.top = 20 * (stacks[i].length - 1) + "px";
-      document.getElementById("display").getElementsByTagName("img")[dragged[1]].style.opacity = "1";
-      document.getElementById("display").getElementsByTagName("img")[dragged[1]].setAttribute("ondragstart", "drag(" + i + ", " + (stacks[i].length - 1) + ")");
-      document.getElementById("display").getElementsByTagName("img")[dragged[1]].setAttribute("ontouchmove", "touchDrag(" + i + ", " + (stacks[i].length - 1) + ")");
-      document.getElementsByClassName("stack")[i].getElementsByClassName("place")[0].appendChild(document.getElementById("display").getElementsByTagName("img")[dragged[1]]);
+      document.getElementById("display").getElementsByClassName("place")[0].lastElementChild.style.top = 20 * (stacks[i].length - 1) + "px";
+      document.getElementById("display").getElementsByClassName("place")[0].lastElementChild.style.left = "0";
+      document.getElementById("display").getElementsByClassName("place")[0].lastElementChild.style.opacity = "1";
+      document.getElementById("display").getElementsByClassName("place")[0].lastElementChild.setAttribute("ondragstart", "drag(" + i + ", " + (stacks[i].length - 1) + ")");
+      document.getElementById("display").getElementsByClassName("place")[0].lastElementChild.setAttribute("ontouchmove", "touchDrag(" + i + ", " + (stacks[i].length - 1) + ")");
+      document.getElementsByClassName("stack")[i].getElementsByClassName("place")[0].appendChild(document.getElementById("display").getElementsByClassName("place")[0].lastElementChild);
+      if(document.getElementById("display").getElementsByClassName("place")[0].children.length > 0){
+        document.getElementById("display").getElementsByClassName("place")[0].lastElementChild.setAttribute("ontouchmove", "touchDrag(-1, " + (dragged[1] - 1) + ")");
+        document.getElementById("display").getElementsByClassName("place")[0].lastElementChild.draggable = "true";
+      }
       document.getElementsByClassName("droppable")[i].style.height = document.getElementsByClassName("place")[0].offsetHeight * 2 + 20 * (stacks[i].length - 1) + "px";
       dropped = true;
     }
@@ -382,11 +417,16 @@ function finalDrop(i){
       finals[i].push(deck[dragged[1]]);
       deck.splice(dragged[1], 1);
       deckPos --;
-      document.getElementById("display").getElementsByTagName("img")[dragged[1]].style.top = "0";
-      document.getElementById("display").getElementsByTagName("img")[dragged[1]].style.opacity = "1";
-      document.getElementById("display").getElementsByTagName("img")[dragged[1]].setAttribute("ondragstart", "drag(" + (i + 7) + ", " + (finals[i].length - 1) + ")");
-      document.getElementById("display").getElementsByTagName("img")[dragged[1]].setAttribute("ontouchmove", "touchDrag(" + (i + 7) + ", " + (finals[i].length - 1) + ")");
-      document.getElementsByClassName("final")[i].getElementsByClassName("place")[0].appendChild(document.getElementById("display").getElementsByTagName("img")[dragged[1]]);
+      document.getElementById("display").getElementsByClassName("place")[0].lastElementChild.style.top = "0";
+      document.getElementById("display").getElementsByClassName("place")[0].lastElementChild.style.left = "0";
+      document.getElementById("display").getElementsByClassName("place")[0].lastElementChild.style.opacity = "1";
+      document.getElementById("display").getElementsByClassName("place")[0].lastElementChild.setAttribute("ondragstart", "drag(" + (i + 7) + ", " + (finals[i].length - 1) + ")");
+      document.getElementById("display").getElementsByClassName("place")[0].lastElementChild.setAttribute("ontouchmove", "touchDrag(" + (i + 7) + ", " + (finals[i].length - 1) + ")");
+      document.getElementsByClassName("final")[i].getElementsByClassName("place")[0].appendChild(document.getElementById("display").getElementsByClassName("place")[0].lastElementChild);
+      if(document.getElementById("display").getElementsByClassName("place")[0].children.length > 0){
+        document.getElementById("display").getElementsByClassName("place")[0].lastElementChild.setAttribute("ontouchmove", "touchDrag(-1, " + (dragged[1] - 1) + ")");
+        document.getElementById("display").getElementsByClassName("place")[0].lastElementChild.draggable = "true";
+      }
       dropped = true;
     }
   }
@@ -447,6 +487,11 @@ function restart(){
   picked.splice(0, picked.length);
   deck.splice(0, deck.length);
   deckPos = -1;
+  if(document.getElementsByTagName("option")[0].selected == true){
+    mode = 0;
+  }else{
+    mode = 1;
+  }
   for(let i = 0; i < 52; i ++){
     cards[i].display = false;
     if(i < 13){

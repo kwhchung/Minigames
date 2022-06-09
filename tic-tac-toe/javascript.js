@@ -28,24 +28,37 @@ function gameRound(i, j){
     document.getElementById("result").innerHTML = "Draw";
     return;
   }
-  let pos = computer();
-  map[pos[0]][pos[1]] = 2;
-  if(document.getElementsByTagName("input")[0].checked == true){
-    document.getElementsByTagName("button")[pos[0] * 3 + pos[1]].innerHTML = "<img src = 'images/circle.png' width = '100%' height = '100%'>";
-  }else{
-    document.getElementsByTagName("button")[pos[0] * 3 + pos[1]].innerHTML = "<img src = 'images/cross.png' width = '100%' height = '100%'>";
+  for(let i = 0; i < 9; i ++){
+    document.getElementsByTagName("button")[i].disabled = true;
   }
-  document.getElementsByTagName("button")[pos[0] * 3 + pos[1]].disabled = true;
-  if(win(2)){
-    document.getElementById("result").innerHTML = "You lose!";
-    for(let i = 0; i < 9; i ++){
-      document.getElementsByTagName("button")[i].disabled = true;
+  setTimeout(function(){
+    let pos = computer();
+    map[pos[0]][pos[1]] = 2;
+    if(document.getElementsByTagName("input")[0].checked == true){
+      document.getElementsByTagName("button")[pos[0] * 3 + pos[1]].innerHTML = "<img src = 'images/circle.png' width = '100%' height = '100%'>";
+    }else{
+      document.getElementsByTagName("button")[pos[0] * 3 + pos[1]].innerHTML = "<img src = 'images/cross.png' width = '100%' height = '100%'>";
     }
-  }
-  if(draw()){
-    document.getElementById("result").innerHTML = "Draw";
-    return;
-  }
+    document.getElementsByTagName("button")[pos[0] * 3 + pos[1]].disabled = true;
+    if(win(2)){
+      document.getElementById("result").innerHTML = "You lose!";
+      for(let i = 0; i < 9; i ++){
+        document.getElementsByTagName("button")[i].disabled = true;
+        return;
+      }
+    }
+    if(draw()){
+      document.getElementById("result").innerHTML = "Draw";
+      return;
+    }
+    for(let i = 0; i < 3; i ++){
+      for(let j = 0; j < 3; j ++){
+        if(map[i][j] == 0){
+          document.getElementsByTagName("button")[i * 3 + j].disabled = false;
+        }
+      }
+    }
+  }, 500);
 }
 
 function win(n){

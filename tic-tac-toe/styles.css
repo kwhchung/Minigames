@@ -2,10 +2,14 @@
   box-sizing: border-box;
 }
 
+body{
+  background-color: PaleTurquoise;
+}
+
 #selectContainer{
-  width: 200px;
-  height: 30px;
-  margin: 20px auto;
+  width: 300px;
+  height: 40px;
+  margin: 30px auto;
   text-align: center;
 }
 
@@ -26,29 +30,32 @@ input{
   height: 300px;
   text-align: center;
   font-size: 0;
-  margin: 20px auto;
+  margin: 30px auto;
 }
 
 div button{
-  width: 33.33%;
-  height: 33.33%;
+  width: calc(33.33% - 3px);
+  height: calc(33.33% - 3px);
   border: 0;
   padding: 10px;
-  background-color: white;
+  background-color: transparent;
 }
 
 .bottomBorder{
-  border-bottom: 4px solid black;
+  height: calc(33.33% + 1.5px);
+  border-bottom: 4px solid DarkCyan;
 }
 
 .rightBorder{
-  border-right: 4px solid black;
+  width: calc(33.33% + 1.5px);
+  border-right: 4px solid DarkCyan;
 }
 
 #restart{
   display: block;
   margin: auto;
   font-size: 18px;
+  background-color: MediumTurquoise;
 }
 
 p{

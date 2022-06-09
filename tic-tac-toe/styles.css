@@ -33,7 +33,7 @@ div button{
   width: 33.33%;
   height: 33.33%;
   border: 0;
-  padding: 0;
+  padding: 5px;
   background-color: white;
 }
 

@@ -14,7 +14,7 @@
   height: 100%;
   display: inline-block;
   float: left;
-  padding: 4px;
+  padding: 5px;
 }
 
 input{
@@ -33,7 +33,7 @@ div button{
   width: 33.33%;
   height: 33.33%;
   border: 0;
-  padding: 5px;
+  padding: 10px;
   background-color: white;
 }
 
@@ -58,7 +58,7 @@ p{
 
 @media only screen and (max-width: 768px){
   #selectContainer{
-    width: 90vw;
+    width: 80vw;
   }
 
   #map{

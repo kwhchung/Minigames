@@ -1,5 +1,6 @@
 const map = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
 const corners = [[0, 0], [0, 2], [2, 0], [2, 2]];
+let computerRound = 0;
 
 function changeCharacter(i){
   restart();
@@ -31,7 +32,7 @@ function gameRound(i, j){
   for(let i = 0; i < 9; i ++){
     document.getElementsByTagName("button")[i].disabled = true;
   }
-  setTimeout(function(){
+  computerRound = setTimeout(function(){
     let pos = computer();
     map[pos[0]][pos[1]] = 2;
     if(document.getElementsByTagName("input")[0].checked == true){
@@ -208,6 +209,7 @@ function draw(){
 }
 
 function restart(){
+  clearTimeout(computerRound);
   for(let i = 0; i < 3; i ++){
     for(let j = 0; j < 3; j ++){
       map[i][j] = 0;

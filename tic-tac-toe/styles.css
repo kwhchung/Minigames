@@ -116,14 +116,14 @@ div button{
   }
 
   #robot{
-    width: 50vw;
-    height: 65vw;
+    width: 40vw;
+    height: 55vw;
     left: 5vw;
   }
 
   #human{
-    width: 60vw;
-    height: 75vw;
+    width: 50vw;
+    height: 65vw;
     right: 5vw;
   }
 }

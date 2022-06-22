@@ -86,7 +86,6 @@ div button{
 
 #human{
   right: 75px;
-  z-index: 1;
 }
 
 @media only screen and (max-width: 768px){

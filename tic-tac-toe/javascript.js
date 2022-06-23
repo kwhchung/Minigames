@@ -13,23 +13,17 @@ function changeCharacter(i){
 }
 
 function changeRound(i){
+  let width = document.getElementById("human").offsetWidth;
+  let height = document.getElementById("human").offsetHeight;
+  document.getElementById("human").style.width = document.getElementById("robot").offsetWidth + "px";
+  document.getElementById("human").style.height = document.getElementById("robot").offsetHeight + "px";
+  document.getElementById("robot").style.width = width + "px";
+  document.getElementById("robot").style.height = height + "px";
   if(i == 0){
-    let width = document.getElementById("human").offsetWidth;
-    let height = document.getElementById("human").offsetHeight;
-    document.getElementById("human").style.width = document.getElementById("robot").offsetWidth + "px";
-    document.getElementById("human").style.height = document.getElementById("robot").offsetHeight + "px";
     document.getElementById("human").style.opacity = "0.5";
-    document.getElementById("robot").style.width = width + "px";
-    document.getElementById("robot").style.height = height + "px";
     document.getElementById("robot").style.opacity = "1";
   }else{
-    let width = document.getElementById("robot").offsetWidth;
-    let height = document.getElementById("robot").offsetHeight;
-    document.getElementById("robot").style.width = document.getElementById("human").offsetWidth + "px";
-    document.getElementById("robot").style.height = document.getElementById("human").offsetHeight + "px";
     document.getElementById("robot").style.opacity = "0.5";
-    document.getElementById("human").style.width = width + "px";
-    document.getElementById("human").style.height = height + "px";
     document.getElementById("human").style.opacity = "1";
   }
 }

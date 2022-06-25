@@ -148,14 +148,14 @@ div button{
   }
 
   #robot{
-    width: 40vw;
-    height: 55vw;
-    left: 5vw;
+    width: 35vw;
+    height: 48vw;
+    left: 10vw;
   }
 
   #human{
-    width: 50vw;
-    height: 65vw;
-    right: 5vw;
+    width: 45vw;
+    height: 58vw;
+    right: 10vw;
   }
 }

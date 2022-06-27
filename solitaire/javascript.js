@@ -103,6 +103,15 @@ function displayDeck(){
       card.setAttribute("ontouchend", "touchDrop()");
       document.getElementById("display").getElementsByClassName("place")[0].appendChild(card);
     }
+    if(deckPos == deck.length - 1){
+      document.getElementById("deck").getElementsByClassName("place")[0].innerHTML = "";
+    }else if(deckPos == deck.length){
+      deckPos = -1;
+      if(deck.length > 0){
+        document.getElementById("deck").getElementsByClassName("place")[0].innerHTML = "<img src = 'images/back.png' width = '100%' height = '100%' draggable = 'false'>";
+      }
+      document.getElementById("display").getElementsByClassName("place")[0].innerHTML = "";
+    }
   }else{
     document.getElementById("display").getElementsByClassName("place")[0].innerHTML = "";
     for(let i = 0; i < 3; i ++){
@@ -119,22 +128,28 @@ function displayDeck(){
       card.setAttribute("ondragstart", "drag(-1, " + deckPos + ")");
       card.setAttribute("ondragend", "endDrag()");
       card.setAttribute("ontouchend", "touchDrop()");
-      if(i == 2){
+      if(i == 2 || deckPos == deck.length - 1){
         card.setAttribute("ontouchmove", "touchDrag(-1, " + deckPos + ")");
       }else{
         card.setAttribute("draggable", "false");
       }
       document.getElementById("display").getElementsByClassName("place")[0].appendChild(card);
+      if(deckPos == deck.length - 1){
+        break;
+      }
+    }
+    if(deckPos >= deck.length - 1){
+      document.getElementById("deck").getElementsByClassName("place")[0].innerHTML = "";
+    }
+    if(deckPos == deck.length){
+      deckPos = -1;
+      if(deck.length > 0){
+        document.getElementById("deck").getElementsByClassName("place")[0].innerHTML = "<img src = 'images/back.png' width = '100%' height = '100%' draggable = 'false'>";
+      }
+      document.getElementById("display").getElementsByClassName("place")[0].innerHTML = "";
     }
   }
-  if(deckPos >= deck.length - 1){
-    document.getElementById("deck").getElementsByClassName("place")[0].innerHTML = "";
-  }
-  if(deckPos >= deck.length){
-    deckPos = -1;
-    document.getElementById("deck").getElementsByClassName("place")[0].innerHTML = "<img src = 'images/back.png' width = '100%' height = '100%' draggable = 'false'>";
-    document.getElementById("display").getElementsByClassName("place")[0].innerHTML = "";
-  }
+
 }
 
 function displayCard(i, j){
@@ -234,7 +249,7 @@ function touchDrag(i, j){
       card.setAttribute("width", "100%");
       card.setAttribute("height", "100%");
       document.getElementById("ghostPlace").appendChild(card);
-      document.getElementById("display").getElementsByTagName("img")[j].style.opacity = "0";
+      document.getElementById("display").getElementsByClassName("place")[0].lastElementChild.style.opacity = "0";
     }
   }
   document.getElementById("ghost").style.top = (event.changedTouches[0].pageY - document.getElementById("ghost").offsetHeight / 2) + "px";

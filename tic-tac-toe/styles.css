@@ -36,20 +36,20 @@ input{
 }
 
 div button{
-  width: calc(33.33% - 3px);
-  height: calc(33.33% - 3px);
+  width: calc(33.33% - 2.6px);
+  height: calc(33.33% - 2.6px);
   border: 0;
   padding: 10px;
   background-color: transparent;
 }
 
 .bottomBorder{
-  height: calc(33.33% + 1.5px);
+  height: calc(33.33% + 1.3px);
   border-bottom: 4px solid black;
 }
 
 .rightBorder{
-  width: calc(33.33% + 1.5px);
+  width: calc(33.33% + 1.3px);
   border-right: 4px solid black;
 }
 
@@ -77,7 +77,6 @@ div button{
   position: absolute;
   top: 70px;
   left: 125px;
-  display: none;
 }
 
 .vertical{

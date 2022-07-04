@@ -3,8 +3,8 @@ const corners = [[0, 0], [0, 2], [2, 0], [2, 2]];
 let computerRound = 0;
 
 for(let i = 0; i < 3; i ++){
-  document.getElementsByClassName("vertical")[i].style.left = (i * (document.getElementById("map").getElementsByTagName("button")[0].offsetWidth - 0.5) + document.getElementById("map").getElementsByTagName("button")[i].clientWidth / 2) + "px";
-  document.getElementsByClassName("horizontal")[i].style.top = (i * (document.getElementById("map").getElementsByTagName("button")[0].offsetHeight - 0.5) + document.getElementById("map").getElementsByTagName("button")[i * 3].clientHeight / 2 + document.getElementById("map").getElementsByTagName("button")[0].offsetTop - document.getElementsByClassName("horizontal")[0].offsetHeight / 2) + "px";
+  document.getElementsByClassName("vertical")[i].style.left = (i * document.getElementById("map").getElementsByTagName("button")[0].offsetWidth + document.getElementById("map").getElementsByTagName("button")[i].clientWidth / 2) + "px";
+  document.getElementsByClassName("horizontal")[i].style.top = (i * document.getElementById("map").getElementsByTagName("button")[0].offsetHeight + document.getElementById("map").getElementsByTagName("button")[i * 3].clientHeight / 2 + document.getElementById("map").getElementsByTagName("button")[0].offsetTop - document.getElementsByClassName("horizontal")[i].offsetHeight / 2) + "px";
   document.getElementsByClassName("vertical")[i].style.display = "none";
   document.getElementsByClassName("horizontal")[i].style.display = "none";
 }

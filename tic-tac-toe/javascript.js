@@ -1,6 +1,7 @@
 const map = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
 const corners = [[0, 0], [0, 2], [2, 0], [2, 2]];
 let computerRound = 0;
+window.addEventListener("beforeinstallprompt", e => console.log(e));
 
 for(let i = 0; i < 3; i ++){
   document.getElementsByClassName("vertical")[i].style.left = (i * document.getElementById("map").getElementsByTagName("button")[0].offsetWidth + document.getElementById("map").getElementsByTagName("button")[i].clientWidth / 2) + "px";

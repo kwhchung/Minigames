@@ -2,7 +2,7 @@ const map = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
 const corners = [[0, 0], [0, 2], [2, 0], [2, 2]];
 let computerRound = 0;
 if("serviceWorker" in navigator){
-  navigator.serviceWorker.register("js/sw.js");
+  navigator.serviceWorker.register("js/sw.js").then(() => console.log("registered")).catch(() => console.log("failed"));
 }
 window.addEventListener("beforeinstallprompt", e => console.log(e));
 

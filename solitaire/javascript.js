@@ -497,6 +497,9 @@ function endAnimation(){
 
 function restart(){
   clearInterval(endInterval);
+  endPos = 0;
+  a = 1;
+  aIncreased = false;
   document.getElementById("end").innerHTML = "";
   document.getElementById("end").style.display = "none";
   picked.splice(0, picked.length);

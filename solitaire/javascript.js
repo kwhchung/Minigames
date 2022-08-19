@@ -63,6 +63,7 @@ function start(){
         card.setAttribute("ondragend", "endDrag()");
         card.setAttribute("ontouchmove", "touchDrag(" + i + ", " + j + ")");
         card.setAttribute("ontouchend", "touchDrop()");
+        card.setAttribute("ontouchcancel", "touchDrop()");
       }else{
         card = document.createElement("img");
         card.src = "images/back.png";
@@ -109,6 +110,7 @@ function displayDeck(){
       card.setAttribute("ondragend", "endDrag()");
       card.setAttribute("ontouchmove", "touchDrag(-1, " + deckPos + ")");
       card.setAttribute("ontouchend", "touchDrop()");
+      card.setAttribute("ontouchcancel", "touchDrop()");
       document.getElementById("display").getElementsByClassName("place")[0].appendChild(card);
     }
     if(deckPos == deck.length - 1){
@@ -136,6 +138,7 @@ function displayDeck(){
       card.setAttribute("ondragstart", "drag(-1, " + deckPos + ")");
       card.setAttribute("ondragend", "endDrag()");
       card.setAttribute("ontouchend", "touchDrop()");
+      card.setAttribute("ontouchcancel", "touchDrop()");
       if(i == 2 || deckPos == deck.length - 1){
         card.setAttribute("ontouchmove", "touchDrag(-1, " + deckPos + ")");
       }else{
@@ -168,6 +171,7 @@ function displayCard(i, j){
     document.getElementsByClassName("stack")[i].getElementsByTagName("img")[j].setAttribute("ondragend", "endDrag()");
     document.getElementsByClassName("stack")[i].getElementsByTagName("img")[j].setAttribute("ontouchmove", "touchDrag(" + i + ", " + j + ")");
     document.getElementsByClassName("stack")[i].getElementsByTagName("img")[j].setAttribute("ontouchend", "touchDrop()");
+    document.getElementsByClassName("stack")[i].getElementsByTagName("img")[j].setAttribute("ontouchcancel", "touchDrop()");
     document.getElementsByClassName("stack")[i].getElementsByTagName("img")[j].removeAttribute("onclick");
   }
 }
@@ -208,7 +212,6 @@ function drag(i, j){
       document.getElementById("display").getElementsByClassName("place")[0].lastElementChild.style.opacity = "0";
     }
     event.dataTransfer.setDragImage(document.getElementById("ghost"), document.getElementById("ghost").offsetHeight / 2, document.getElementById("ghost").offsetWidth / 2);
-    document.getElementById("ghost").style.left = "-100px";
   }
 }
 

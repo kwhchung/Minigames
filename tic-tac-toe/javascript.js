@@ -5,7 +5,7 @@ const corners = [[0, 0], [0, 2], [2, 0], [2, 2]];
 // id for timeout of computer round
 let computerRound = 0;
 
-// set the verticle and horizontal lines to locate at the center of the grid cells
+// set the vertical and horizontal lines to locate at the center of the grid cells
 // offsetWidth / offsetHeight = content + padding + border
 // clientWidth / clientHeight = content + padding
 // offsetTop = top position in parent element
